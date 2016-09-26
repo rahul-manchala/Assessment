@@ -1,0 +1,36 @@
+<div class="container-fluid page-header">
+	<div class="row">
+		<div class="col-xs-12">
+			<h3>{{pageName}}</h3>
+		</div>
+	</div>
+	<div class="row middle-align">
+		<div class="col-xs-6">
+			<input type="text" class="form-control" ng-model="searchText" />
+			<button type="button" class="btn btn-secondary" ng-click="search();">Ok</button>
+		</div>
+		<div class="col-xs-6 text-right">
+			<select ng-model="selectedLanguage" class="form-control" ng-options="lang.id as lang.name for lang in langList"></select>
+		</div>
+	</div>
+</div>
+<div class="container-fluid page-body">
+	<div class="row blog-item" ng-repeat="glossary in  glossaries | orderBy:'title' | searchFor:searchString | filter:{lang:selectedLanguage}">
+		<div class="col-xs-12">
+			<div class="row">
+				<div class="col-xs-12">
+					<h3><a href="{{apiUrl}}{{glossary.url}}" target="_blank">{{glossary.title}}</a></h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12" ng-bind-html="glossary.content">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-xs-12" ng-if="!(glossaries | orderBy:'title' | searchFor:searchString | filter:{lang:selectedLanguage}).length">
+			<div class="alert alert-danger">
+			  <strong>No data available with your filter, Please update your filter.</strong>
+			</div>
+		</div>
+</div>

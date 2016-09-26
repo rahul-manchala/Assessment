@@ -1,0 +1,28 @@
+<div class="container-fluid page-header">
+	<div class="row middle-align">
+		<div class="col-xs-6">
+			<h3>{{pageName}}</h3>
+		</div>
+		<div class="col-xs-6 text-right">
+			<select ng-model="selectedLanguage" class="form-control" ng-options="lang.id as lang.name for lang in langList"></select>
+		</div>
+	</div>
+</div>
+<div class="container-fluid page-body">
+	<div class="row blog-item" ng-repeat="blog in blogs | orderBy: formatDate(blog.date) | filter:{lang:selectedLanguage}">
+		<div class="col-xs-12">
+			<div class="row middle-align">
+				<div class="col-xs-6">
+					<h3><a href="{{apiUrl}}{{blog.url}}" target="_blank">{{blog.title}}</a><br /><span class="category-list">in <span ng-repeat="category in blog.categories"><span ng-if="$index != 0">, </span>{{category}}</span></span></h3>
+				</div>
+				<div class="col-xs-6 text-right">
+					<span class="date">{{formatDate(blog.date) | date:'MM/dd/yyyy'}}</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12" ng-bind-html="blog.content">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="utf-8">
+	<title>Angular Test</title>
+	<meta name="description" content="Angular Test application">
+	<meta name="author" content="SitePoint">
+	<link rel="stylesheet" href="styles/bootstrap.min.css">
+	<link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+	<div class="wrapper">
+		<nav class="navbar navbar-inverse">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <h1>Healthcare.gov</h1>
+		    </div>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#/">Blog</a></li>
+				<li><a href="#glossary">Glossary</a></li>
+				<li><a href="#contact">Contact</a></li>
+			</ul>
+		  </div>
+		</nav>
+		<div class="content" ng-view></div>
+	</div>
+	<script src="scripts/angular.min.js"></script>
+	<script src="scripts/angular-route.min.js"></script>
+	<script src="scripts/angular-sanitize.min.js"></script>
+	<script src="app.js"></script>
+	<script src="modules/blog/blog.controller.js"></script>
+	<script src="modules/glossary/glossary.controller.js"></script>
+	<script src="modules/contact/contact.controller.js"></script>
+</body>
+</html>

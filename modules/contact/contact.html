@@ -1,0 +1,54 @@
+<div class="container-fluid page-header no-bg">
+	<div class="row">
+		<div class="col-xs-12">
+			<h3>Contact Us</h3>
+		</div>
+	</div>
+</div>
+<div class="container-fluid page-body">
+	<div class="row">
+		<div class="col-xs-6">
+			<form name="contactusForm">
+				<div class="alert alert-danger" ng-if="forminValid">
+				  <strong>This form is invalid.</strong>
+				</div>
+				<div class="alert alert-success" ng-if="formValid">
+				  <strong>This form is valid.</strong>
+				</div>
+				<div class="row">
+					<div class="col-xs-8">
+						<div class="form-group" ng-class="{ 'has-error': contactus.name.$invalid }">
+							<input type="text" class="form-control" placeholder="Name" ng-model="contactus.name" required>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-8">
+						<div class="form-group" ng-class="{ 'has-error': contactus.email.$invalid }">
+							<input type="email" class="form-control" placeholder="Email Address" ng-model="contactus.email" required>
+						</div>
+					</div>
+					<div class="col-xs-4">
+						<div class="form-group" ng-class="{ 'has-error': contactus.reason.$invalid }">
+							<select name="selectedReason" ng-model="contactus.selectedReason" class="form-control" ng-options="reason.id as reason.name for reason in contactusReasons">
+      							<option value="" selected>Reason for contact</option>
+    						</select>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="form-group" ng-class="{ 'has-error': contactus.message.$invalid }">
+							<textarea class="form-control" id="exampleTextarea" rows="10" placeholder="Message" ng-model="contactus.message" required></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12 text-right">
+						<button type="button" validate-form class="btn btn-secondary">Submit</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
